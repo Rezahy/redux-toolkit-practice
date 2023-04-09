@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages";
+import SingleCocktail from "./pages/SingleCocktail";
+import { useEffect } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Router>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/cocktail/:id" element={<SingleCocktail />} />
+				<Route
+					path="*"
+					element={
+						<h1 className="h-screen w-full flex justify-center items-center text-3xl bg-gray-100 ">
+							page not found!
+						</h1>
+					}
+				/>
+			</Routes>
+		</Router>
+	);
 }
 
 export default App;
